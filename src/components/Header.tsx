@@ -3,13 +3,17 @@ import { Menu, Globe, Bell } from 'lucide-react';
 
 interface HeaderProps {
   notificationCount: number;
+  onMenuClick: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ notificationCount }) => {
+const Header: React.FC<HeaderProps> = ({ notificationCount, onMenuClick }) => {
   return (
-    <header className="bg-white shadow-sm px-4 py-3 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 bg-white shadow-sm px-4 py-3 flex items-center justify-between z-30">
       <div className="flex items-center space-x-3">
-        <button className="text-blue-600">
+        <button 
+          onClick={onMenuClick}
+          className="text-blue-600 hover:text-blue-700 transition-colors"
+        >
           <Menu size={24} />
         </button>
         <h1 className="text-2xl font-bold text-blue-600">Nivaro</h1>

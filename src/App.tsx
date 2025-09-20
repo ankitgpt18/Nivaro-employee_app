@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
+import UserSidebar from './components/UserSidebar';
 import IssueCard from './components/IssueCard';
 import StatusSummary from './components/StatusSummary';
 import CategoryGrid from './components/CategoryGrid';
@@ -17,6 +18,7 @@ function App() {
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedIssue, setSelectedIssue] = useState<Issue | null>(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleCategorySelect = (categoryId: string) => {
     setSelectedCategory(categoryId);
@@ -46,7 +48,7 @@ function App() {
         return <CommunityView issues={issues} />;
       default:
         return (
-          <div className="px-6 py-4">
+          <div className="px-6 py-4 pb-24">
             <div className="mb-6">
               <h2 className="text-lg font-bold text-gray-900 mb-4">
                 Reported issues in your locality
@@ -83,13 +85,21 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <Header notificationCount={2} />
+      <Header 
+        notificationCount={2} 
+        onMenuClick={() => setIsSidebarOpen(true)} 
+      />
       
-      <main className="flex-1 overflow-y-auto">
+      <main className="flex-1 overflow-y-auto pt-16 pb-20">
         {renderContent()}
       </main>
 
       <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
+
+      <UserSidebar 
+        isOpen={isSidebarOpen} 
+        onClose={() => setIsSidebarOpen(false)} 
+      />
 
       <ReportModal
         isOpen={isReportModalOpen}

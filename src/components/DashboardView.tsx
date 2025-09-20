@@ -32,7 +32,7 @@ const DashboardView: React.FC<DashboardViewProps> = ({ issues }) => {
   const resolutionRate = totalIssues > 0 ? Math.round((resolvedIssues / totalIssues) * 100) : 0;
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-6 space-y-6 pb-24">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-gray-900">Civic Dashboard</h1>
         <div className="flex items-center space-x-2 text-sm text-gray-600">

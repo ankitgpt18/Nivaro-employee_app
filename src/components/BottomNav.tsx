@@ -15,7 +15,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) => {
   ];
 
   return (
-    <nav className="bg-white border-t border-gray-200 px-6 py-3">
+    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-3 z-30">
       <div className="flex justify-between">
         {tabs.map((tab) => {
           const Icon = tab.icon;

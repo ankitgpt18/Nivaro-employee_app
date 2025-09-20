@@ -38,7 +38,7 @@ const StatusView: React.FC<StatusViewProps> = ({ issues }) => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 pb-24">
       <h1 className="text-2xl font-bold text-gray-900 mb-6">Issue Status</h1>
       
       <div className="space-y-4">
