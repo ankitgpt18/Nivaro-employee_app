@@ -13,7 +13,14 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ isOpen, onClose }) => {
     email: 'rahul.kumar@email.com',
     phone: '+91 9876543210',
     address: 'Shastri Nagar, Ranchi, Jharkhand',
-    pincode: '834001'
+    pincode: '834001',
+    employeeId: '',
+    department: '',
+    designation: '',
+    workArea: '',
+    joiningDate: '',
+    supervisorName: '',
+    supervisorPhone: ''
   });
 
   const [isDetectingLocation, setIsDetectingLocation] = useState(false);
@@ -71,7 +78,7 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ isOpen, onClose }) => {
         <div className="p-6">
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-xl font-bold text-gray-900">User Profile</h2>
+            <h2 className="text-xl font-bold text-gray-900">Employee Profile</h2>
             <button
               onClick={onClose}
               className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -84,7 +91,7 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ isOpen, onClose }) => {
           <div className="flex justify-center mb-6">
             <div className="relative">
               <img
-                src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150"
+                src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150"
                 alt="User Profile"
                 className="w-24 h-24 rounded-full object-cover border-4 border-blue-100"
               />
@@ -196,24 +203,23 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ isOpen, onClose }) => {
           </div>
 
           {/* Work Area */}
+            <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Residential Address
-              Assigned Work Area
+                Assigned Work Area
+              </label>
               <div className="relative">
-                <Home className="absolute left-3 top-3 text-gray-400" size={16} />
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
-              <input
-                type="text"
-                value={userProfile.workArea}
-                onChange={(e) => handleInputChange('workArea', e.target.value)}
-                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-              />
+                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
+                <input
+                  type="text"
+                  value={userProfile.workArea}
+                  onChange={(e) => handleInputChange('workArea', e.target.value)}
+                  className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                />
               </div>
             </div>
 
             {/* Location and Pincode */}
           {/* Joining Date & Location Fetch */}
-              <button
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Joining Date
@@ -225,23 +231,23 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ isOpen, onClose }) => {
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
               />
             </div>
+              <button
                 onClick={handleFetchLocation}
                 disabled={isDetectingLocation}
-                className="flex items-center justify-center space-x-2 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium"
-              className="flex items-center justify-center space-x-2 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium mt-6"
+                className="flex items-center justify-center space-x-2 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium mt-6"
+              >
                 {isDetectingLocation ? (
                   <>
                     <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent" />
-                    <span>Fetching...</span>
-                  <span>Updating...</span>
+                    <span>Updating...</span>
+                  </>
                 ) : (
                   <>
                     <Navigation size={16} />
-                    <span>Fetch Location</span>
-                  <span>Update Area</span>
+                    <span>Update Area</span>
+                  </>
                 )}
               </button>
-              <div>
 
             {/* DigiLocker Button */}
           {/* Supervisor Details */}
@@ -251,8 +257,6 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ isOpen, onClose }) => {
                 Supervisor Name
               </label>
               <input
-                )
-                }
                 type="text"
                 value={userProfile.supervisorName}
                 onChange={(e) => handleInputChange('supervisorName', e.target.value)}
@@ -274,17 +278,17 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ isOpen, onClose }) => {
             {/* Additional Options */}
             <div className="pt-4 border-t border-gray-200 space-y-3">
               <button className="w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
-                📊 My Reports History
-              📊 My Resolution History
+                📊 My Resolution History
+              </button>
               <button className="w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
-                🏆 Credibility Score: 85/100
-              🏆 Performance Score: 92/100
+                🏆 Performance Score: 92/100
+              </button>
               <button className="w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
-                🔔 Notification Settings
-              📋 Assigned Tasks: 12
+                📋 Assigned Tasks: 12
+              </button>
               <button className="w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
-          <h2 className="text-xl font-bold text-gray-900">Employee Profile</h2>
-              ⏰ Work Schedule
+                ⏰ Work Schedule
+              </button>
               <button className="w-full text-left px-3 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors">
                 🚪 Logout
               </button>
@@ -297,6 +301,3 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ isOpen, onClose }) => {
 };
 
 export default UserSidebar;
-              src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150"
-  )
-}
