@@ -97,6 +97,20 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ isOpen, onClose }) => {
           {/* Form Fields */}
           <div className="space-y-4">
             {/* Name Fields */}
+          {/* Employee ID */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Employee ID
+            </label>
+            <input
+              type="text"
+              value={userProfile.employeeId}
+              onChange={(e) => handleInputChange('employeeId', e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm bg-gray-50"
+              readOnly
+            />
+          </div>
+
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -155,74 +169,119 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ isOpen, onClose }) => {
             </div>
 
             {/* Address */}
+          {/* Department & Designation */}
+          <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Residential Address
+                Department
               </label>
+              <input
+                type="text"
+                value={userProfile.department}
+                onChange={(e) => handleInputChange('department', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Designation
+              </label>
+              <input
+                type="text"
+                value={userProfile.designation}
+                onChange={(e) => handleInputChange('designation', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+              />
+            </div>
+          </div>
+
+          {/* Work Area */}
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Residential Address
+              Assigned Work Area
               <div className="relative">
                 <Home className="absolute left-3 top-3 text-gray-400" size={16} />
-                <textarea
-                  value={userProfile.address}
-                  onChange={(e) => handleInputChange('address', e.target.value)}
-                  rows={3}
-                  className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm resize-none"
-                />
+              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
+              <input
+                type="text"
+                value={userProfile.workArea}
+                onChange={(e) => handleInputChange('workArea', e.target.value)}
+                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
               </div>
             </div>
 
             {/* Location and Pincode */}
-            <div className="grid grid-cols-2 gap-3">
+          {/* Joining Date & Location Fetch */}
               <button
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Joining Date
+              </label>
+              <input
+                type="date"
+                value={userProfile.joiningDate}
+                onChange={(e) => handleInputChange('joiningDate', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+              />
+            </div>
                 onClick={handleFetchLocation}
                 disabled={isDetectingLocation}
                 className="flex items-center justify-center space-x-2 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium"
-              >
+              className="flex items-center justify-center space-x-2 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium mt-6"
                 {isDetectingLocation ? (
                   <>
                     <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent" />
                     <span>Fetching...</span>
-                  </>
+                  <span>Updating...</span>
                 ) : (
                   <>
                     <Navigation size={16} />
                     <span>Fetch Location</span>
-                  </>
+                  <span>Update Area</span>
                 )}
               </button>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Pincode
-                </label>
-                <input
-                  type="text"
-                  value={userProfile.pincode}
-                  onChange={(e) => handleInputChange('pincode', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                  placeholder="834001"
-                />
-              </div>
-            </div>
 
             {/* DigiLocker Button */}
-            <button className="w-full bg-orange-600 text-white py-3 px-4 rounded-lg hover:bg-orange-700 transition-colors flex items-center justify-center space-x-2 font-medium">
-              <CreditCard size={20} />
-              <span>Connect DigiLocker</span>
-            </button>
-
+          {/* Supervisor Details */}
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Supervisor Name
+              </label>
+              <input
+                type="text"
+                value={userProfile.supervisorName}
+                onChange={(e) => handleInputChange('supervisorName', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Supervisor Phone
+              </label>
+              <input
+                type="tel"
+                value={userProfile.supervisorPhone}
+                onChange={(e) => handleInputChange('supervisorPhone', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+              />
+            </div>
+          </div>
             {/* Additional Options */}
             <div className="pt-4 border-t border-gray-200 space-y-3">
               <button className="w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
                 📊 My Reports History
-              </button>
+              📊 My Resolution History
               <button className="w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
                 🏆 Credibility Score: 85/100
-              </button>
+              🏆 Performance Score: 92/100
               <button className="w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
                 🔔 Notification Settings
-              </button>
+              📋 Assigned Tasks: 12
               <button className="w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
-                🌐 Language: English
-              </button>
+          <h2 className="text-xl font-bold text-gray-900">Employee Profile</h2>
+              ⏰ Work Schedule
               <button className="w-full text-left px-3 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors">
                 🚪 Logout
               </button>
@@ -235,3 +294,4 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ isOpen, onClose }) => {
 };
 
 export default UserSidebar;
+              src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150"
