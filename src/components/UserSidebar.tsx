@@ -250,6 +250,8 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ isOpen, onClose }) => {
                 Supervisor Name
               </label>
               <input
+                )
+                }
                 type="text"
                 value={userProfile.supervisorName}
                 onChange={(e) => handleInputChange('supervisorName', e.target.value)}
@@ -295,3 +297,5 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ isOpen, onClose }) => {
 
 export default UserSidebar;
               src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150"
+  )
+}
