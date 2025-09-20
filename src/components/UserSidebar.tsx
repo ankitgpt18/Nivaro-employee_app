@@ -207,6 +207,7 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ isOpen, onClose }) => {
                 value={userProfile.workArea}
                 onChange={(e) => handleInputChange('workArea', e.target.value)}
                 className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+              />
               </div>
             </div>
 
