@@ -1,6 +1,6 @@
 import React from 'react';
 import { Issue } from '../types';
-import { MessageCircle, ThumbsUp, Share } from 'lucide-react';
+import { MessageCircle, ThumbsUp, Share, Star } from 'lucide-react';
 
 interface CommunityViewProps {
   issues: Issue[];
@@ -17,6 +17,28 @@ const CommunityView: React.FC<CommunityViewProps> = ({ issues }) => {
     return `${Math.floor(hours / 24)}d ago`;
   };
 
+  const generateUserRating = (userId: string) => {
+    // Generate consistent rating based on user name hash
+    const hash = userId.split('').reduce((a, b) => {
+      a = ((a << 5) - a) + b.charCodeAt(0);
+      return a & a;
+    }, 0);
+    return Math.abs(hash % 5) + 1; // 1-5 stars
+  };
+
+  const renderStars = (rating: number) => {
+    return (
+      <div className="flex items-center space-x-1">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <Star
+            key={star}
+            size={12}
+            className={star <= rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}
+          />
+        ))}
+      </div>
+    );
+  };
   return (
     <div className="p-6 pb-24">
       <h1 className="text-2xl font-bold text-gray-900 mb-6">Community Feed</h1>
@@ -32,7 +54,10 @@ const CommunityView: React.FC<CommunityViewProps> = ({ issues }) => {
                   </span>
                 </div>
                 <div>
-                  <p className="font-medium text-gray-900">{issue.reportedBy}</p>
+                  <div className="flex items-center space-x-2">
+                    <p className="font-medium text-gray-900">{issue.reportedBy}</p>
+                    {renderStars(generateUserRating(issue.reportedBy))}
+                  </div>
                   <p className="text-xs text-gray-500">{formatTimeAgo(issue.reportedAt)}</p>
                 </div>
               </div>

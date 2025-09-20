@@ -13,7 +13,6 @@ interface ReportModalProps {
 }
 
 const ReportModal: React.FC<ReportModalProps> = ({ isOpen, onClose, selectedCategory, onSubmit }) => {
-  const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
   const [image, setImage] = useState<string | null>(null);
@@ -25,6 +24,22 @@ const ReportModal: React.FC<ReportModalProps> = ({ isOpen, onClose, selectedCate
 
   const category = categories.find(cat => cat.id === selectedCategory);
 
+  const generateComplaintId = (categoryId: string, pincode: string) => {
+    const categoryMap: { [key: string]: string } = {
+      'roads': 'RI',
+      'water': 'WS',
+      'garbage': 'GW',
+      'drainage': 'DS',
+      'electricity': 'EL',
+      'nuisance': 'PN'
+    };
+    
+    const categoryCode = categoryMap[categoryId] || 'GN';
+    const randomNum = Math.floor(1000 + Math.random() * 9000);
+    const extractedPincode = pincode.replace(/\D/g, '').slice(0, 6) || '834001';
+    
+    return `${extractedPincode}${categoryCode}${randomNum}`;
+  };
   const handleImageCapture = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -51,14 +66,17 @@ const ReportModal: React.FC<ReportModalProps> = ({ isOpen, onClose, selectedCate
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title || !description || !location) return;
+    if (!description || !location) return;
 
     setIsSubmitting(true);
     
     // Simulate API call delay
     setTimeout(() => {
+      const pincode = location.match(/\d{6}/)?.[0] || '834001';
+      const complaintId = generateComplaintId(selectedCategory, pincode);
+      
       const newIssue: Omit<Issue, 'id' | 'reportedAt'> = {
-        title,
+        title: complaintId,
         description,
         category: selectedCategory,
         status: 'reported' as const,
@@ -79,7 +97,6 @@ const ReportModal: React.FC<ReportModalProps> = ({ isOpen, onClose, selectedCate
       setIsSubmitting(false);
       
       // Reset form
-      setTitle('');
       setDescription('');
       setLocation('');
       setCoordinates(null);
@@ -118,19 +135,6 @@ const ReportModal: React.FC<ReportModalProps> = ({ isOpen, onClose, selectedCate
             </div>
           )}
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Issue Title *
-            </label>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="Brief description of the issue"
-              required
-            />
-          </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -221,7 +225,7 @@ const ReportModal: React.FC<ReportModalProps> = ({ isOpen, onClose, selectedCate
 
           <button
             type="submit"
-            disabled={isSubmitting || !title || !description || !location}
+            disabled={isSubmitting || !description || !location}
             className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-700 transition-colors"
           >
             {isSubmitting ? (

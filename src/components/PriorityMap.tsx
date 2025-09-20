@@ -39,7 +39,7 @@ const PriorityMap: React.FC<PriorityMapProps> = ({ issues }) => {
 
   return (
     <div className="bg-white rounded-xl shadow-md p-6">
-      <h2 className="text-xl font-bold text-gray-900 mb-4">Priority Areas Dashboard</h2>
+      <h2 className="text-xl font-bold text-gray-900 mb-4">Local Area Dashboard</h2>
       
       {/* Priority Statistics */}
       <div className="grid grid-cols-2 gap-4 mb-6">

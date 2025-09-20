@@ -42,8 +42,6 @@ function App() {
     switch (activeTab) {
       case 'status':
         return <StatusView issues={issues} />;
-      case 'dashboard':
-        return <DashboardView issues={issues} />;
       case 'community':
         return <CommunityView issues={issues} />;
       default:

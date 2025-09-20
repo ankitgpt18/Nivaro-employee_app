@@ -112,7 +112,7 @@ export const priorityAreas: PriorityArea[] = [
 export const mockIssues: Issue[] = [
   {
     id: '1',
-    title: 'Massive garbage pile blocking Kadma Market entrance',
+    title: '822001GW7234',
     description: 'Large accumulation of garbage has been blocking the main entrance to Kadma Market for over a week. The smell is unbearable and attracting stray animals. Local vendors are losing business due to this issue.',
     category: 'garbage',
     status: 'reported',
@@ -130,7 +130,7 @@ export const mockIssues: Issue[] = [
   },
   {
     id: '2',
-    title: 'Deep pothole causing accidents on Station Road',
+    title: '826001RI4567',
     description: 'A deep pothole near Dhanbad Railway Station is causing serious traffic issues. Multiple vehicles have been damaged, and there was a minor accident yesterday. Immediate repair needed.',
     category: 'roads',
     status: 'in-progress',
@@ -148,7 +148,7 @@ export const mockIssues: Issue[] = [
   },
   {
     id: '3',
-    title: 'Complete water supply disruption in Shastri Nagar',
+    title: '834001WS8901',
     description: 'Entire Shastri Nagar colony has been without water supply for 4 days. Residents are facing severe hardship, especially elderly and children. Water tankers are urgently needed.',
     category: 'water',
     status: 'resolved',
@@ -166,7 +166,7 @@ export const mockIssues: Issue[] = [
   },
   {
     id: '4',
-    title: 'Sewage overflow creating health hazard',
+    title: '831001DS2345',
     description: 'Sewage system has overflowed on Circular Road, creating unhygienic conditions. The area smells terrible and poses serious health risks to nearby residents and shopkeepers.',
     category: 'drainage',
     status: 'reported',
@@ -184,7 +184,7 @@ export const mockIssues: Issue[] = [
   },
   {
     id: '5',
-    title: 'Street lights not working for 2 weeks',
+    title: '834001EL6789',
     description: 'All street lights on HB Road have been non-functional for two weeks. This is causing safety concerns, especially for women and elderly people walking at night.',
     category: 'electricity',
     status: 'in-progress',
@@ -202,7 +202,7 @@ export const mockIssues: Issue[] = [
   },
   {
     id: '6',
-    title: 'Illegal construction blocking public pathway',
+    title: '834001PN3456',
     description: 'Someone has constructed an illegal structure that completely blocks the public footpath near Kokar. Pedestrians are forced to walk on the busy road, creating safety hazards.',
     category: 'nuisance',
     status: 'reported',
@@ -220,7 +220,7 @@ export const mockIssues: Issue[] = [
   },
   {
     id: '7',
-    title: 'Broken water pipe flooding residential area',
+    title: '834001WS7890',
     description: 'A major water pipe has burst in Doranda area, causing flooding in nearby houses. Water is being wasted continuously and residents basement are getting flooded.',
     category: 'water',
     status: 'in-progress',
@@ -238,7 +238,7 @@ export const mockIssues: Issue[] = [
   },
   {
     id: '8',
-    title: 'Traffic signal not working at major intersection',
+    title: '834001RI1234',
     description: 'The traffic signal at Albert Ekka Chowk has been malfunctioning for 3 days. This is one of the busiest intersections in Ranchi and causing major traffic jams.',
     category: 'roads',
     status: 'reported',

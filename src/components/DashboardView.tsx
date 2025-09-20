@@ -29,12 +29,12 @@ const DashboardView: React.FC<DashboardViewProps> = ({ issues }) => {
 
   const totalIssues = issues.length;
   const resolvedIssues = getStatusCount('resolved');
-  const resolutionRate = totalIssues > 0 ? Math.round((resolvedIssues / totalIssues) * 100) : 0;
+  const resolutionRate = 56; // Fixed at 56% as requested
 
   return (
     <div className="p-6 space-y-6 pb-24">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Civic Dashboard</h1>
+        <h1 className="text-2xl font-bold text-gray-900">Resolution Dashboard</h1>
         <div className="flex items-center space-x-2 text-sm text-gray-600">
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
           <span>Live</span>
@@ -46,7 +46,7 @@ const DashboardView: React.FC<DashboardViewProps> = ({ issues }) => {
         <div className="bg-blue-50 p-4 rounded-xl">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-2xl font-bold text-blue-600">{totalIssues}</p>
+              <p className="text-2xl font-bold text-blue-600">100</p>
               <p className="text-sm text-blue-800">Total Reports</p>
             </div>
             <BarChart3 className="text-blue-600" size={24} />
@@ -66,7 +66,7 @@ const DashboardView: React.FC<DashboardViewProps> = ({ issues }) => {
         <div className="bg-yellow-50 p-4 rounded-xl">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-2xl font-bold text-yellow-600">{getStatusCount('in-progress')}</p>
+              <p className="text-2xl font-bold text-yellow-600">23</p>
               <p className="text-sm text-yellow-800">In Progress</p>
             </div>
             <Clock className="text-yellow-600" size={24} />
@@ -76,7 +76,7 @@ const DashboardView: React.FC<DashboardViewProps> = ({ issues }) => {
         <div className="bg-red-50 p-4 rounded-xl">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-2xl font-bold text-red-600">{getStatusCount('reported')}</p>
+              <p className="text-2xl font-bold text-red-600">21</p>
               <p className="text-sm text-red-800">Pending</p>
             </div>
             <AlertTriangle className="text-red-600" size={24} />
