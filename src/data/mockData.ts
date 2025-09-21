@@ -93,7 +93,7 @@ export const priorityAreas: PriorityArea[] = [
   },
   {
     id: 'jamshedpur-market',
-    name: 'Kadma Market Area',
+    name: 'Ashok Nagar Park',
     coordinates: { lat: 22.8046, lng: 86.2029 },
     issueCount: 12,
     priorityLevel: 'high',
