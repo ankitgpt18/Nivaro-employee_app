@@ -113,11 +113,11 @@ export const mockIssues: Issue[] = [
   {
     id: '1',
     title: '822001GW7234',
-    description: 'Large accumulation of garbage has been blocking the main entrance to Kadma Market for over a week. The smell is unbearable and attracting stray animals. Local vendors are losing business due to this issue.',
+    description: 'Large accumulation of garbage has been blocking the main entrance to Community Park of Ashok Nagar for over a week. The smell is unbearable and attracting stray animals. Local vendors are losing business due to this issue.',
     category: 'garbage',
     status: 'reported',
     priority: 'high',
-    location: 'Kadma Market, Jamshedpur, Jharkhand',
+    location: 'Ashok Nagar, Ranchi, Jharkhand',
     coordinates: { lat: 22.8046, lng: 86.2029 },
     image: 'https://preview.redd.it/i-volunteer-on-the-weekends-to-beautify-the-san-francisco-v0-vkxhlo8lyice1.jpg?width=1080&crop=smart&auto=webp&s=8aea0399d2ada667a6d0434a7f27c315e3e7dab5',
     reportCount: 23,
