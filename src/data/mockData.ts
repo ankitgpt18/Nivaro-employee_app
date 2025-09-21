@@ -119,7 +119,7 @@ export const mockIssues: Issue[] = [
     priority: 'high',
     location: 'Kadma Market, Jamshedpur, Jharkhand',
     coordinates: { lat: 22.8046, lng: 86.2029 },
-    image: 'https://images.pexels.com/photos/15199839/pexels-photo-15199839.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://preview.redd.it/i-volunteer-on-the-weekends-to-beautify-the-san-francisco-v0-vkxhlo8lyice1.jpg?width=1080&crop=smart&auto=webp&s=8aea0399d2ada667a6d0434a7f27c315e3e7dab5',
     reportCount: 23,
     upvotes: 45,
     reportedAt: new Date('2024-01-15T10:30:00'),
