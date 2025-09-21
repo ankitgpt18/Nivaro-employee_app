@@ -19,6 +19,8 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedIssue, setSelectedIssue] = useState<Issue | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [resolutionImage, setResolutionImage] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleCategorySelect = (categoryId: string) => {
     setSelectedCategory(categoryId);
@@ -38,6 +40,10 @@ function App() {
     setSelectedIssue(issue);
   };
 
+  const handleResolutionImageCapture = () => {
+    // Simulate camera capture by setting the predefined image
+    setResolutionImage('https://preview.redd.it/i-volunteer-on-the-weekends-to-beautify-the-san-francisco-v0-prukbp8lyice1.jpg?width=1080&crop=smart&auto=webp&s=18093b77f39e2afac6c74d756f1a466b69797e63');
+  };
   const renderContent = () => {
     switch (activeTab) {
       case 'status':
@@ -155,12 +161,20 @@ function App() {
                 </label>
                 <button
                   type="button"
+                  onClick={handleResolutionImageCapture}
                   className="w-full p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-400 transition-colors flex flex-col items-center space-y-2"
                 >
-                  <span className="text-4xl">📷</span>
-                  <span className="text-gray-500">Take photo of completed work</span>
+                  {resolutionImage ? (
+                    <img src={resolutionImage} alt="Resolution" className="w-full h-32 object-cover rounded" />
+                  ) : (
+                    <>
+                      <span className="text-4xl">📷</span>
+                      <span className="text-gray-500">Take photo of completed work</span>
+                    </>
+                  )}
                 </button>
                 <input
+                  ref={fileInputRef}
                   type="file"
                   accept="image/*"
                   capture="environment"
@@ -196,6 +210,10 @@ function App() {
               <button
                 type="submit"
                 className="w-full bg-green-600 text-white py-3 rounded-lg font-medium flex items-center justify-center space-x-2 hover:bg-green-700 transition-colors"
+                onClick={() => {
+                  setIsResolutionModalOpen(false);
+                  setResolutionImage(null);
+                }}
               >
                 <span>✅</span>
                 <span>Submit Resolution</span>
